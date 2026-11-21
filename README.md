@@ -1,5 +1,7 @@
 # RAG Quest 🦉🔮
 
+## https://rag-quest-theta.vercel.app/
+
 *A pixel adventure that teaches how AI finds answers, one level at a time.*
 
 In the kingdom of Pixelia, Orb the magic answer ball keeps making things up. With Pip the library owl, you fix it level by level, and learn **RAG (Retrieval-Augmented Generation)** along the way: the trick real AI apps use to answer from real sources instead of guessing.
