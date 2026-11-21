@@ -1,0 +1,94 @@
+{
+  "books": [
+    {"id": "castle", "title": "Castle History", "color": "red", "pages": ["The castle was built in the year 1203.", "Queen Mira built the castle.", "The castle has 4 tall towers.", "A secret tunnel runs under the kitchen."]},
+    {"id": "dragon", "title": "Dragons of the North", "color": "purple", "pages": ["Ember the dragon sleeps for 100 years at a time.", "Ember only eats hot peppers.", "Dragons are scared of ringing bells.", "Ember has shiny blue scales."]},
+    {"id": "cook", "title": "Royal Cooking", "color": "orange", "pages": ["The king's favourite food is mango pie.", "Mango pie bakes for 40 minutes.", "The royal chef is called Tomo.", "A big feast happens every full moon."]},
+    {"id": "farm", "title": "Farming Guide", "color": "green", "pages": ["Carrots take 70 days to grow.", "Plant seeds in spring.", "Rabbits love to steal carrots.", "Water the plants every morning."]},
+    {"id": "sky", "title": "Stars and Moon", "color": "blue", "pages": ["A full moon comes every 29 days.", "The brightest star is called Lumi.", "A comet visits every 76 years.", "Shooting stars fall in August."]},
+    {"id": "potion", "title": "Magic Potions", "color": "pink", "pages": ["A healing potion is made of red berries and honey.", "Potions glow green when they are ready.", "An invisibility potion lasts 10 minutes.", "Never mix two potions together."]},
+    {"id": "map", "title": "Village Map", "color": "yellow", "pages": ["The blacksmith lives near the river.", "The bakery is next to the old well.", "The school sits on top of the hill.", "The market opens on Sundays."]},
+    {"id": "animals", "title": "Animals of Pixelia", "color": "cyan", "pages": ["Owls can turn their heads almost all the way around.", "Cats sleep for about 16 hours a day.", "Rusty the fox lives in the forest.", "Frogs sing loudly when it rains."]}
+  ],
+
+  "levels": [
+    {
+      "id": 1, "kind": "truth", "title": "The Oracle Makes Things Up", "short": "Spot the guesses",
+      "intro": ["Hoo-hoo! I'm Pip, the library owl.", "This is Orb, our magic answer ball. Orb is clever... but it answers WITHOUT reading any books.", "Villagers will ask Orb questions. Check each answer against the real book page."],
+      "goal": "Press TRUE if Orb matches the book. Press MADE UP if Orb guessed wrong.",
+      "pass": 3,
+      "rounds": [
+        {"who": "meera", "q": "When was the castle built?", "orb": "The castle was built in 1850 by King Bob.", "book": "castle", "page": 0, "true": false},
+        {"who": "kabir", "q": "What does Ember the dragon eat?", "orb": "Ember only eats hot peppers.", "book": "dragon", "page": 1, "true": true},
+        {"who": "anya", "q": "How long does mango pie bake?", "orb": "Mango pie bakes for 3 hours.", "book": "cook", "page": 1, "true": false},
+        {"who": "rohan", "q": "When does the market open?", "orb": "The market opens on Sundays.", "book": "map", "page": 3, "true": true},
+        {"who": "meera", "q": "What is the brightest star called?", "orb": "The brightest star is called Sparkle.", "book": "sky", "page": 1, "true": false}
+      ],
+      "lesson": "An AI that answers without reading can sound sure and still be wrong. This is called a HALLUCINATION. RAG fixes it by giving the AI the right book first."
+    },
+    {
+      "id": 2, "kind": "findbook", "title": "Find the Right Book", "short": "R = Retrieve",
+      "intro": ["Orb needs help! Before answering, Orb must READ the right book.", "A villager asks a question. Three books are on the shelf.", "Pick the book that holds the answer. Be quick!"],
+      "goal": "Tap the book that has the answer before the timer runs out.",
+      "pass": 4, "seconds": 15,
+      "rounds": [
+        {"who": "rohan", "q": "How many towers does the castle have?", "book": "castle", "page": 2, "choices": ["cook", "castle", "sky"]},
+        {"who": "anya", "q": "What are dragons scared of?", "book": "dragon", "page": 2, "choices": ["farm", "potion", "dragon"]},
+        {"who": "kabir", "q": "When should I plant my seeds?", "book": "farm", "page": 1, "choices": ["farm", "map", "animals"]},
+        {"who": "meera", "q": "How do I know a potion is ready?", "book": "potion", "page": 1, "choices": ["dragon", "potion", "cook"]},
+        {"who": "rohan", "q": "Where does the blacksmith live?", "book": "map", "page": 0, "choices": ["sky", "castle", "map"]},
+        {"who": "anya", "q": "How long do cats sleep each day?", "book": "animals", "page": 1, "choices": ["animals", "farm", "potion"]}
+      ],
+      "lesson": "This is the R in RAG: RETRIEVE. Before answering, find where the answer lives. Then the AI reads it, and its answer comes with a source."
+    },
+    {
+      "id": 3, "kind": "keywords", "title": "Magic Keywords", "short": "How search works",
+      "intro": ["Real libraries have thousands of books. Nobody can check them all by hand!", "So the computer SEARCHES. It looks for the important words of the question inside every book.", "Tap the important words, then press SEARCH. Tiny words like 'the' or 'is' don't help."],
+      "goal": "Tap 1 to 3 important words, press SEARCH, and make the right book win.",
+      "pass": 3,
+      "rounds": [
+        {"who": "kabir", "q": "When was the castle built?", "book": "castle"},
+        {"who": "meera", "q": "What does the dragon eat?", "book": "dragon"},
+        {"who": "anya", "q": "Who is the royal chef?", "book": "cook"},
+        {"who": "rohan", "q": "How long do carrots take to grow?", "book": "farm"}
+      ],
+      "lesson": "Search turns your question into KEYWORDS, then gives every book a score for how well it matches. Small words are ignored. The top-scoring books are the ones the AI reads."
+    },
+    {
+      "id": 4, "kind": "slice", "title": "Slice the Scroll", "short": "Chunking",
+      "intro": ["Some books are long scrolls about many things at once.", "If Orb reads a messy piece, it gets confused. So we cut scrolls into small pieces called CHUNKS.", "Click the gaps between lines to place scissors. Cut wherever the topic changes."],
+      "goal": "Cut the scroll so that every piece is about ONE topic.",
+      "pass": 1,
+      "rounds": [
+        {"title": "The Royal Diary", "lines": ["The castle has 4 tall towers.", "A secret tunnel runs under the kitchen.", "The king loves mango pie.", "It bakes for 40 minutes.", "A comet visits every 76 years.", "Shooting stars fall in August."], "cuts": [1, 3], "test": "What does the king love to eat?", "topics": ["Castle", "Food", "Sky"]},
+        {"title": "Forest Notes", "lines": ["Rusty the fox lives in the forest.", "Frogs sing loudly when it rains.", "Frogs live beside the pond.", "Frogs catch flies with their tongues.", "Owls hunt at night.", "Owls can turn their heads around."], "cuts": [0, 3], "test": "Where do frogs live?", "topics": ["Fox", "Frogs", "Owls"]}
+      ],
+      "lesson": "Long texts are cut into CHUNKS before searching. Good chunks stay on one topic, so search hands the AI exactly the right piece, not a messy mix."
+    },
+    {
+      "id": 5, "kind": "fake", "title": "Catch the Fake", "short": "Stick to the source",
+      "intro": ["Now Orb reads the page first. Great! But sometimes it still sneaks in a guess.", "Each answer has 3 sentences. Two come from the page. One is FAKE.", "Find the sentence that is NOT on the page and tap it."],
+      "goal": "Tap the sentence that the page does not say.",
+      "pass": 3,
+      "rounds": [
+        {"book": "castle", "pages": [0, 1, 2], "answer": ["The castle was built in 1203.", "Queen Mira built it.", "Its walls are made of pure gold."], "fake": 2},
+        {"book": "dragon", "pages": [0, 1, 3], "answer": ["Ember sleeps for 100 years at a time.", "Ember breathes rainbow fire.", "Ember has shiny blue scales."], "fake": 1},
+        {"book": "potion", "pages": [0, 1, 2], "answer": ["A healing potion uses red berries and honey.", "It glows green when it is ready.", "It also lets you fly for a day."], "fake": 2},
+        {"book": "farm", "pages": [0, 1, 2], "answer": ["Carrots grow in just 3 days.", "You plant seeds in spring.", "Rabbits love to steal carrots."], "fake": 0},
+        {"book": "sky", "pages": [0, 1, 2], "answer": ["A full moon comes every 29 days.", "The brightest star is called Lumi.", "The moon is made of cheese."], "fake": 2}
+      ],
+      "lesson": "Good RAG answers say ONLY what the sources say, and show where it came from. That's the G in RAG: GENERATE the answer from the retrieved pages, nothing extra."
+    },
+    {
+      "id": 6, "kind": "build", "title": "Build Your Own Oracle", "short": "Full RAG",
+      "intro": ["You've learned every part! Now build your very own Orb.", "Write some notes (or use mine). Orb will cut them into chunks, search them, and answer from them.", "Ask 3 questions your notes CAN answer, and 1 they CAN'T. A good Orb refuses to guess!"],
+      "goal": "Get 3 answers from your notes, plus 1 honest \"I can't find that\".",
+      "pass": 1,
+      "templates": [
+        {"name": "My Pet", "text": "My cat is called Biscuit.\nBiscuit is orange with white paws.\nShe loves eating fish and chicken.\nBiscuit is 3 years old.\nShe sleeps on the sofa every afternoon.\nHer best friend is a dog named Momo."},
+        {"name": "My School", "text": "My school is called Sunrise Public School.\nSchool starts at 8 in the morning.\nMy favourite subject is science.\nOur science teacher is Mrs. Rao.\nThe library has a big blue door.\nSports day is in December."},
+        {"name": "Blank", "text": ""}
+      ],
+      "lesson": "That's the whole of RAG: CHUNK your notes, RETRIEVE the best pieces, and GENERATE an answer only from them. When nothing matches, say so. Never guess!"
+    }
+  ]
+}
