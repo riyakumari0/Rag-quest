@@ -40,14 +40,6 @@ Everything lives in [quest/rag.py](quest/rag.py), using only the Python standard
 
 Optional: copy `.env.example` to `.env` and add `GEMINI_API_KEY=...` for AI-written answers in Level 6.
 
-## Put it on Vercel
-
-1. Push this folder to GitHub.
-2. On vercel.com: **Add New → Project** → import the repo → framework preset **Other** → **Deploy**.
-3. Optional: add `GEMINI_API_KEY` under **Settings → Environment Variables**.
-
-`vercel.json` serves `public/` as the website and runs `api/index.py` (Python) for `/api/*`. The server stores nothing, so it fits Vercel's serverless functions.
-
 ## Project map
 
 ```
